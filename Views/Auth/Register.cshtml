@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Đăng ký";
+}
+<div class="login-page">
+    <div class="login-card">
+        <h2>Tạo tài khoản mới</h2>
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert">@ViewBag.Error</div>
+        }
+        <form method="post" asp-action="Register">
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <label>Tài khoản</label>
+                <input type="text" name="username" required />
+            </div>
+            <div class="form-group">
+                <label>Mật khẩu</label>
+                <input type="password" name="password" required />
+            </div>
+            <div class="form-group">
+                <label>Nhập lại mật khẩu</label>
+                <input type="password" name="confirmPassword" required />
+            </div>
+            <button class="btn" type="submit">Đăng ký</button>
+        </form>
+        <p style="margin-top:12px;">Đã có tài khoản? <a href="/Auth/Login">Đăng nhập</a></p>
+    </div>
+</div>
